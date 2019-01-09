@@ -16,89 +16,46 @@
 
 package com.gmail.junehanabi.modifybiomes;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.Arrays;
 
 public class ModifyBiomes extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        
-        try {
-            /*
-             * All the frozen biomes
-             * 
-             * 1) ColdBeach
-             * 2) FrozenOcean
-             * 3) FrozenRiver
-             * 4) IceFlats
-             * 5) IceMountains
-             * 6) TaigaCold
-             * 7) TaigaColdHills
-             */
-            
-            // Here we relpace the non-frigid ones with closest frozen counterpart
-            BiomesMapping.ReplaceBiome(BiomesMapping.BEACHES, BiomesMapping.COLD_BEACH);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUSHROOM_ISLAND_SHORE, BiomesMapping.COLD_BEACH);
-            BiomesMapping.ReplaceBiome(BiomesMapping.STONE_BEACH, BiomesMapping.COLD_BEACH);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.DEEP_OCEAN, BiomesMapping.FROZEN_OCEAN);
-            BiomesMapping.ReplaceBiome(BiomesMapping.OCEAN, BiomesMapping.FROZEN_OCEAN);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.RIVER, BiomesMapping.FROZEN_RIVER);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.DESERT, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_DESERT, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MESA, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MESA_CLEAR_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MESA_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_MESA, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_MESA_CLEAR_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_MESA_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUSHROOM_ISLAND, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.PLAINS, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_PLAINS, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.SAVANNA, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.SAVANNA_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_SAVANNA, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_SAVANNA_ROCK, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.SWAMPLAND, BiomesMapping.ICE_FLATS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_SWAMPLAND, BiomesMapping.ICE_FLATS);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.EXTREME_HILLS, BiomesMapping.ICE_MOUNTAINS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.EXTREME_HILLS_WITH_TREES, BiomesMapping.ICE_MOUNTAINS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_EXTREME_HILLS, BiomesMapping.ICE_MOUNTAINS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_EXTREME_HILLS_WITH_TREES, BiomesMapping.ICE_MOUNTAINS);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.BIRCH_FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_BIRCH_FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.JUNGLE, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.JUNGLE_EDGE, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_JUNGLE, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_JUNGLE_EDGE, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.REDWOOD_TAIGA, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_REDWOOD_TAIGA, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.ROOFED_FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_ROOFED_FOREST, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.TAIGA, BiomesMapping.TAIGA_COLD);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_TAIGA, BiomesMapping.TAIGA_COLD);
-            
-            BiomesMapping.ReplaceBiome(BiomesMapping.BIRCH_FOREST_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_BIRCH_FOREST_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.DESERT_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.FOREST_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.JUNGLE_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.REDWOOD_TAIGA_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.MUTATED_REDWOOD_TAIGA_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.SMALLER_EXTREME_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-            BiomesMapping.ReplaceBiome(BiomesMapping.TAIGA_HILLS, BiomesMapping.TAIGA_COLD_HILLS);
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex) {
-            Logger
-                    .getLogger(ModifyBiomes.class.getName())
-                    .log(Level.SEVERE, null, ex);
+        this.saveDefaultConfig();
+        FileConfiguration config = getConfig();
+        for (String BiomeToReplace : config.getKeys(false))
+        {
+            BiomeToReplace = BiomeToReplace.toUpperCase();
+            if (Arrays.stream(BiomesMapping.AllowedBiomes).anyMatch(BiomeToReplace::equals))
+            {
+                String ReplaceBiome = config.getString(BiomeToReplace).toUpperCase();
+                if (Arrays.stream(BiomesMapping.AllowedBiomes).anyMatch(ReplaceBiome::equals))
+                {
+                    try
+                    {
+                        BiomesMapping.ReplaceBiome(BiomeToReplace, ReplaceBiome);
+                    }
+                    catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex)
+                    {
+                        getLogger().info("Failed to replace " + BiomeToReplace + " with " + ReplaceBiome );
+                    }
+                }
+                else{
+                    getLogger().info("Biome " + ReplaceBiome + " you wanted to replace with is not part of the biomes list" );
+                }
+            }
+            else{
+                getLogger().info("Biome " + BiomeToReplace + " you wanted to replace is not part of the biomes list" );
+            }
         }
+    }
+    
+    @Override
+    public void onDisable()
+    {
+        //Do nothing
     }
 }
